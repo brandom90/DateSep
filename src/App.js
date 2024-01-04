@@ -1,9 +1,12 @@
 import React from 'react'
-import ListSeperater from './components/ListSeperater'
+import Bariable from './Bariable.js'
 
 const App = () => {
+  const startDate = new Date('2023-01-01');
+  const endDate = new Date('2023-01-31');
+  const daysPerWeek = 5;
   return (
-    <ListSeperater />
+    <Bariable startDate={startDate} endDate={endDate} daysPerWeek={daysPerWeek}/>
   )
 }
 

@@ -1,9 +1,8 @@
 
 
-const splitDatesByDay = () => {
-  const startDate = new Date('2023-01-01');
-  const endDate = new Date('2023-01-31');
-  const daysPerWeek = 2;
+
+const splitDatesByDay = ({endDate, startDate, daysPerWeek}) => {
+  
   const dates = [];
   let currentDate = new Date(startDate);
 
@@ -15,13 +14,23 @@ const splitDatesByDay = () => {
   const dayLists = Array.from({ length: daysPerWeek }, () => []);
 
   dates.forEach(date => {
-    const dayIndex = date.getDay(); // 0 (Sunday) to 6 (Saturday)
+    const dayIndex = date.getDay(); // 0 (Sunday) to 6 (Saturday), gets each day from each item in the dates array
     if (dayIndex < daysPerWeek) {
-      dayLists[dayIndex].push(date.getDate());
+      dayLists[dayIndex].push(date.toLocaleDateString());
     }
   });
 
-  return dayLists;
+  const result = dayLists
+  return (
+    <div>
+      {result.map((dayList, index) => (
+        <div key={index}>
+          {`List for Day ${index + 1}: `}
+          {dayList.join(', ')}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default splitDatesByDay
